@@ -1,0 +1,9 @@
+#######################
+# Global Config
+#######################
+
+# Model + dataset configuration specific file
+GlobalArgs.config = "./config/energy-config.gin"
+
+# Set the base url to host the demo, if needed
+GlobalArgs.baseurl = "/"
