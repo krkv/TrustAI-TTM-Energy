@@ -1,0 +1,71 @@
+User: model accuracy on {cat_features}
+Parsed: filter {cat_features} true and score default [E]
+
+User: could you show model performance on {num_features} over {num_values}
+Parsed: filter {num_features} greater than {num_values} and score default [E]
+
+User: accuracy on {cat_features} where {num_features} is {num_values}
+Parsed: filter {num_features} equal to {num_values} and filter {cat_features} true and score default [E]
+
+User: testing accuracy
+Parsed: score default [E]
+
+User: display score
+Parsed: score default [E]
+
+User: give me the accuracy on the data
+Parsed: score accuracy [E]
+
+User: show me the test set performance
+Parsed: score default [E]
+
+User: give me the accuracy on the training data
+Parsed: score default [E]
+
+User: training accuracy on {cat_features}
+Parsed: filter {cat_features} true and score default [E]
+
+User: testing accuracy please
+Parsed: score default [E]
+
+User: nice! could you give me the test accuracy on the training data?
+Parsed: score default [E]
+
+User: training accuracy please
+Parsed: score default [E]
+
+User: how often are you right?
+Parsed: score default [E]
+
+User: how often are you correct?
+Parsed: score default [E]
+
+User: what's the rate you do correct predictions?
+Parsed: score default [E]
+
+User: how frequently do you get it correct?
+Parsed: score default [E]
+
+User: how accurate is the model on all the data?
+Parsed: score default [E]
+
+User: how accurate is the model over all the instances in the data?
+Parsed: score default [E]
+
+User: what's the accuracy for people {filter_text}?
+Parsed: {filter_parse} and score default [E]
+
+User: what's the testing accuracy for people {filter_text}
+Parsed: {filter_parse} and score default [E]
+
+User: for {filter_text}, how well, in terms of accuracy, does the model do on the training and test data
+Parsed: {filter_parse} and score default and score default [E]
+
+User: what's the accuracy performance of the model on the training data for individuals with {filter_text}
+Parsed: {filter_parse} and score default [E]
+
+User: how accurate are you in predicting the class {class_names}?
+Parsed: score default [E]
+
+User: when scoring {class_names}, what's the model's accuracy?
+Parsed: score default [E]
