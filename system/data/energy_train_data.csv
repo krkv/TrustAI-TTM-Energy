@@ -1,4 +1,4 @@
-datetime,outdoor_temperature,indoor_temperature,active_electricity_8,y
+datetime,outdoor_temperature,indoor_temperature,past_electricity,y
 05-10-22 15:00,26.34690096,23.0,2913.825,1019.475
 19-12-22 15:00,21.81912657,17.41666667,2490.95,3409.151894
 09-12-22 13:00,22.20485716,19.83333333,2134.925,3036.1125
