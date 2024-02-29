@@ -367,10 +367,8 @@ class Prompts:
                                  num_features: list,
                                  cat_filler_dict: dict,
                                  num_filler_dict: dict,
-                                 class_dict: dict,
                                  semantic_cat_names: dict,
-                                 semantic_num_names: dict,
-                                 semantic_class_names: dict) -> dict:
+                                 semantic_num_names: dict) -> dict:
         """Builds a filler dict of filter fillers
 
         These fillers represent the filtering operations and corresponding parses.
@@ -411,12 +409,6 @@ class Prompts:
                                                         '{num_values}',
                                                         num_filler_dict,
                                                         semantic_num_names)
-
-            cur_filter_filler = self._fill_wildcard(cur_filter_filler,
-                                                    '{non_semantic_class_names}',
-                                                    '{class_names}',
-                                                    class_dict,
-                                                    semantic_class_names)
 
             for this_filler in cur_filter_filler:
                 split_filler = this_filler.split("\n")
@@ -495,31 +487,20 @@ class Prompts:
 
         app.logger.info("Building filter dicts...")
 
-        non_semantic_classes = list(class_names.keys())
-        # wildcard dictionary to add if classes are needed
-        class_dict = {
-            'class': [class_names[f] for f in non_semantic_classes]
-        }
-
-        full_class_dict = {str(ns_name): [class_names[ns_name]] for ns_name in class_names}
-
         # add id to categorical values
         cat_filler_dict['id'] = list(np.random.choice(
             len(target), size=max_values_per_feature))
 
         semantic_cat_names = build_semantic_dict(cat_filler_dict)
         semantic_num_names = build_semantic_dict(num_filler_dict)
-        semantic_class_names = build_semantic_dict(full_class_dict)
 
         # This filler dict contains filtering text and parse info
         filter_filler_dict = self.build_filter_filler_dict(cat_features,
                                                            num_features,
                                                            cat_filler_dict,
                                                            num_filler_dict,
-                                                           class_dict=full_class_dict,
                                                            semantic_cat_names=semantic_cat_names,
-                                                           semantic_num_names=semantic_num_names,
-                                                           semantic_class_names=semantic_class_names)
+                                                           semantic_num_names=semantic_num_names)
 
         # Will contain prompt ids -> prompts with wildcards enumerated
         filled_prompt_set = {}
@@ -559,12 +540,6 @@ class Prompts:
                                              '{exp_type}',
                                              '{exp_name}',
                                              exp_dict,
-                                             semantic_feature_names=None)
-
-            cur_prompt = self._fill_wildcard(cur_prompt,
-                                             '{unused}',
-                                             '{class_names}',
-                                             class_dict,
                                              semantic_feature_names=None)
 
             filled_prompt_set[prompt_id] = cur_prompt
