@@ -1,9 +1,9 @@
 load_t5_params.model_name = "t5-small"
 load_t5_params.regenerate_dataset = False
-load_t5_params.device = "cpu"
+load_t5_params.device = "cuda"
 load_t5_params.seed = 0
 
-load_t5_params.n_epochs = 25
+load_t5_params.n_epochs = 5
 load_t5_params.source_len = 128
 load_t5_params.target_len = 128
 

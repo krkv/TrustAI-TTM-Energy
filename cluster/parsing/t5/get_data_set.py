@@ -12,18 +12,7 @@ from explain.logic import ExplainBot
 
 
 def get_config_loc(dataset: str) -> str:
-    """Gets the location of a dataset's configuration file"""
-    if dataset == "diabetes":
-        config_loc = "./configs/diabetes-config.gin"
-    elif dataset == "compas":
-        config_loc = "./configs/compas-config.gin"
-    elif dataset == "german":
-        config_loc = "./configs/german-config.gin"
-    elif dataset.endswith(".gin"):
-        config_loc = dataset
-    else:
-        raise NameError(f"Unknown dataset {dataset}")
-    return config_loc
+    return "./config/energy-config.gin"
 
 
 def add_to_dict_list(cur_dict: dict, key: str, value: Any):
