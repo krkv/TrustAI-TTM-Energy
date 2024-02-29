@@ -1,0 +1,69 @@
+#################################################
+# The energy use case dataset conversation config
+#################################################
+
+# Name of the parsing model
+# ExplainBot.parsing_model_name = "krkv/bikes-t5-small"
+ExplainBot.parsing_model_name = "nearest-neighbor"
+
+# Set skip_prompts to true for quicker startup for finetuned models
+# make sure to set to false using few-shot models or finetuning
+ExplainBot.skip_prompts = True
+
+# t5 configuration file
+ExplainBot.t5_config = "./parsing/t5/gin_configs/t5-small.gin"
+
+# User provided prediction model file path
+ExplainBot.model_file_path = "./model/energy_gp_model.pkl"
+
+# Seed
+ExplainBot.seed = 0
+
+# The dataset to run the conversation on
+ExplainBot.dataset_file_path = "./data/energy_test_data.csv"
+
+# The background dataset for the conversation
+ExplainBot.background_dataset_file_path = "./data/energy_train_data.csv"
+ExplainBot.name = "energy"
+
+# Dataset feature information
+ExplainBot.dataset_index_column = 0
+ExplainBot.target_variable_name = "y"
+ExplainBot.categorical_features = None
+ExplainBot.numerical_features = None
+ExplainBot.remove_underscores = False
+
+# Few-shot settings
+ExplainBot.prompt_metric = "cosine"
+ExplainBot.prompt_ordering = "ascending"
+
+# Prompt params
+Prompts.prompt_cache_size = 1_000_000
+Prompts.prompt_cache_location = "./cache/energy-prompts.pkl"
+Prompts.max_values_per_feature = 2
+Prompts.sentence_transformer_model_name = "all-mpnet-base-v2"
+Prompts.prompt_folder = "./explain/prompts"
+Prompts.num_per_knn_prompt_template = 1
+Prompts.num_prompt_template = 7
+
+# Explanation Params
+Explanation.max_cache_size = 1_000_000
+
+# MegaExplainer Params
+MegaExplainer.cache_location = "./cache/energy-mega-explainer-tabular.pkl"
+MegaExplainer.use_selection = False
+
+# Tabular Dice Params
+TabularDice.cache_location = "./cache/energy-dice-tabular.pkl"
+
+# Dataset description
+DatasetDescription.dataset_objective = "predict energy usage during past data"
+DatasetDescription.dataset_description = "Energy Use Case Dataset"
+DatasetDescription.model_description = "symbolic regressor"
+
+# Feature definitions
+ExplainBot.feature_definitions = {
+    "outdoor_temperature": "temperature outside",
+    "indoor_temperature": "temperature inside",
+    "active_electricity_8": "active electricity 8 hours ago"
+}
