@@ -1,0 +1,2 @@
+/gpfs/space/home/rodion/ttm/venv_energy/bin/python: can't open file '/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/slurm/output/./parsing/t5/start_fine_tuning.py': [Errno 2] No such file or directory
+srun: error: falcon2: task 0: Exited with exit code 2

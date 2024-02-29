@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/start_fine_tuning.py", line 15, in <module>
+    from parsing.t5.t5_trainer import t5_trainer
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/t5_trainer.py", line 12, in <module>
+    import wandb
+ModuleNotFoundError: No module named 'wandb'
+srun: error: falcon2: task 0: Exited with exit code 1

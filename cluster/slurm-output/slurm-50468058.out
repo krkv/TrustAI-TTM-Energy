@@ -1,0 +1,32 @@
+wandb: Currently logged in as: rodion-ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.16.3
+wandb: Run data is saved locally in /gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/slurm/output/wandb/run-20240301_003134-mh7vx8j4
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run driven-hill-30
+wandb: ⭐️ View project at https://wandb.ai/rodion-ai/project-ttm
+wandb: 🚀 View run at https://wandb.ai/rodion-ai/project-ttm/runs/mh7vx8j4
+Loaded configs...
+Loading model and tokenizer...
+Traceback (most recent call last):
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/start_fine_tuning.py", line 105, in <module>
+    main(args)
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/start_fine_tuning.py", line 91, in main
+    t5_trainer(t5_params,
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/t5_trainer.py", line 109, in t5_trainer
+    tokenizer, model = load_model(t5_params.model_name,
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/t5_trainer.py", line 33, in load_model
+    tokenizer = T5Tokenizer.from_pretrained(name, device=device)
+  File "/gpfs/space/home/rodion/ttm/venv_energy/lib/python3.9/site-packages/transformers/utils/import_utils.py", line 1330, in __getattribute__
+    requires_backends(cls, cls._backends)
+  File "/gpfs/space/home/rodion/ttm/venv_energy/lib/python3.9/site-packages/transformers/utils/import_utils.py", line 1318, in requires_backends
+    raise ImportError("".join(failed))
+ImportError: 
+T5Tokenizer requires the SentencePiece library but it was not found in your environment. Checkout the instructions on the
+installation page of its repo: https://github.com/google/sentencepiece#installation and follow the ones
+that match your environment. Please note that you may need to restart your runtime after installation.
+
+wandb: - 0.006 MB of 0.006 MB uploadedwandb: \ 0.006 MB of 0.006 MB uploadedwandb: | 0.006 MB of 0.006 MB uploadedwandb: / 0.009 MB of 0.011 MB uploadedwandb: - 0.012 MB of 0.012 MB uploadedwandb: 🚀 View run driven-hill-30 at: https://wandb.ai/rodion-ai/project-ttm/runs/mh7vx8j4
+wandb: ️⚡ View job at https://wandb.ai/rodion-ai/project-ttm/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjE0NDI2OTEyOQ==/version_details/v0
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240301_003134-mh7vx8j4/logs
+srun: error: falcon2: task 0: Exited with exit code 1

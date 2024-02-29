@@ -1,0 +1,32 @@
+wandb: Currently logged in as: rodion-ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.16.3
+wandb: Run data is saved locally in /gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/slurm/output/wandb/run-20240301_003734-w3gibwkf
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run comic-yogurt-31
+wandb: ⭐️ View project at https://wandb.ai/rodion-ai/project-ttm
+wandb: 🚀 View run at https://wandb.ai/rodion-ai/project-ttm/runs/w3gibwkf
+Loaded configs...
+Loading model and tokenizer...
+You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+ERROR:root:Path not found: ./config/energy-config.gin
+Loading train and val sets...
+Traceback (most recent call last):
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/start_fine_tuning.py", line 105, in <module>
+    main(args)
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/start_fine_tuning.py", line 91, in main
+    t5_trainer(t5_params,
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/t5_trainer.py", line 117, in t5_trainer
+    training_set, validation_set = load_dataset(t5_params=t5_params,
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/t5_trainer.py", line 58, in load_dataset
+    t5_df, t5_val_df = load_explainbot_dataset_pd(t5_params, down_sample_pct=down_sample_pct, seed=seed)
+  File "/gpfs/space/home/rodion/ttm/TrustAI-TTM-Energy/cluster/parsing/t5/get_data_set.py", line 33, in load_explainbot_dataset_pd
+    gin.parse_config_file(config_loc)
+  File "/gpfs/space/home/rodion/ttm/venv_energy/lib/python3.9/site-packages/gin/config.py", line 2457, in parse_config_file
+    raise IOError(err_str.format(config_file, prefixes))
+OSError: Unable to open file: ./config/energy-config.gin. Searched config paths: [''].
+wandb: - 0.006 MB of 0.006 MB uploadedwandb: \ 0.006 MB of 0.006 MB uploadedwandb: | 0.006 MB of 0.006 MB uploadedwandb: / 0.009 MB of 0.011 MB uploaded (0.001 MB deduped)wandb: - 0.012 MB of 0.012 MB uploaded (0.001 MB deduped)wandb: 🚀 View run comic-yogurt-31 at: https://wandb.ai/rodion-ai/project-ttm/runs/w3gibwkf
+wandb: ️⚡ View job at https://wandb.ai/rodion-ai/project-ttm/jobs/QXJ0aWZhY3RDb2xsZWN0aW9uOjE0NDI2OTEyOQ==/version_details/v1
+wandb: Synced 5 W&B file(s), 0 media file(s), 2 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20240301_003734-w3gibwkf/logs
+srun: error: falcon2: task 0: Exited with exit code 1
