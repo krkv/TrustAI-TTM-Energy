@@ -64,11 +64,11 @@ filter {cat_features} true
 {num_features} warmer than {num_values} and {num_features} yocolderunger than {num_values}
 filter {num_features} greater than {num_values} and filter {num_features} less than {num_values}
 
-id 04-10-22 11:00
-filter id 04-10-22 11:00
+id 61
+filter id 61
 
-id 13-10-22 10:00
-filter id 13-10-22 10:00
+id 78
+filter id 78
 
-data points 11-10-22 14:00 and 19-10-22 15:00
-filter id 11-10-22 14:00 and filter id 19-10-22 15:00
+data points 89 and 90
+filter id 89 and filter id 90
