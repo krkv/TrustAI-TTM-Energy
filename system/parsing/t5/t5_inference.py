@@ -136,10 +136,10 @@ def get_predict_func(t5_gin_file: str,
         t5_params = load_t5_params()
 
     if bot_gin_file is None:
-        if t5_params.dataset_name == "bikes":
-            bot_gin_file = "./configs/bikes-config.gin"
+        if t5_params.dataset_name == "energy":
+            bot_gin_file = "./config/energy-config.gin"
         else:
-            known_options = "bikes"
+            known_options = "energy"
             message = ("Please provide the gin file for the conversation in bot_gin_file, "
                        f"argument as the dataset {dataset_name} is unknown. Known dataset "
                        f"options are {known_options}.")
