@@ -299,13 +299,6 @@ class ExplainBot:
         return secrets.token_hex(n_bytes)
 
     @staticmethod
-    def log(logging_input: dict):
-        """Performs the system logging."""
-        assert isinstance(logging_input, dict), "Logging input must be dict"
-        assert "time" not in logging_input, "Time field will be added to logging input"
-        log_dialogue_input(logging_input)
-
-    @staticmethod
     def build_logging_info(bot_name: str,
                            username: str,
                            response_id: str,
@@ -434,13 +427,7 @@ class ExplainBot:
         username = user_session_conversation.username
 
         response_id = self.gen_almost_surely_unique_id()
-        logging_info = self.build_logging_info(self.bot_name,
-                                               username,
-                                               response_id,
-                                               text,
-                                               parsed_text,
-                                               returned_item)
-        self.log(logging_info)
+
         # Concatenate final response, parse, and conversation representation
         # This is done so that we can split both the parse and final
         # response, then present all the data

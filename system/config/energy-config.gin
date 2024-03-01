@@ -4,7 +4,7 @@
 
 # Name of the parsing model
 # ExplainBot.parsing_model_name = "krkv/bikes-t5-small"
-ExplainBot.parsing_model_name = "nearest-neighbor"
+ExplainBot.parsing_model_name = "./llm/energy_t5-small_epoch_4_lr_0.0001_batchsize_32_optimizer_adamw_downsample_1.0"
 
 # Set skip_prompts to true for quicker startup for finetuned models
 # make sure to set to false using few-shot models or finetuning
@@ -57,8 +57,8 @@ MegaExplainer.use_selection = False
 TabularDice.cache_location = "./cache/energy-dice-tabular.pkl"
 
 # Dataset description
-DatasetDescription.dataset_objective = "predict energy usage during past data"
-DatasetDescription.dataset_description = "Energy Use Case Dataset"
+DatasetDescription.dataset_objective = "predict energy usage using the past data"
+DatasetDescription.dataset_description = "Energy Use Case"
 DatasetDescription.model_description = "symbolic regressor"
 
 # Feature definitions
