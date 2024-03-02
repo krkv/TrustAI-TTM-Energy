@@ -3,7 +3,6 @@
 #################################################
 
 # Name of the parsing model
-# ExplainBot.parsing_model_name = "krkv/bikes-t5-small"
 ExplainBot.parsing_model_name = "./llm/energy_t5-small_epoch_4_lr_0.0001_batchsize_32_optimizer_adamw_downsample_1.0"
 
 # Set skip_prompts to true for quicker startup for finetuned models
@@ -27,10 +26,10 @@ ExplainBot.background_dataset_file_path = "./data/energy_train_data.csv"
 ExplainBot.name = "energy"
 
 # Dataset feature information
-ExplainBot.dataset_index_column = 0
+ExplainBot.dataset_index_column = [0,1]
 ExplainBot.target_variable_name = "y"
-ExplainBot.categorical_features = None
-ExplainBot.numerical_features = None
+ExplainBot.categorical_features = []
+ExplainBot.numerical_features = [ "outdoor_temperature", "indoor_temperature", "past_electricity" ]
 ExplainBot.remove_underscores = False
 
 # Few-shot settings
@@ -56,8 +55,10 @@ MegaExplainer.use_selection = False
 # Tabular Dice Params
 TabularDice.cache_location = "./cache/energy-dice-tabular.pkl"
 
+Conversation.class_names = None
+
 # Dataset description
-DatasetDescription.dataset_objective = "predict energy usage using the past data"
+DatasetDescription.dataset_objective = "predict energy usage from the historical data"
 DatasetDescription.dataset_description = "Energy Use Case"
 DatasetDescription.model_description = "symbolic regressor"
 
@@ -65,5 +66,5 @@ DatasetDescription.model_description = "symbolic regressor"
 ExplainBot.feature_definitions = {
     "outdoor_temperature": "temperature outside",
     "indoor_temperature": "temperature inside",
-    "active_electricity_8": "active electricity 8 hours ago"
+    "past_electricity": "active electricity 8 hours ago"
 }
