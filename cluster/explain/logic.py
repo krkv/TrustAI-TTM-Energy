@@ -43,7 +43,7 @@ class ExplainBot:
                  model_file_path: str,
                  dataset_file_path: str,
                  background_dataset_file_path: str,
-                 dataset_index_column: int,
+                 dataset_index_column: list[int],
                  target_variable_name: str,
                  categorical_features: list[str],
                  numerical_features: list[str],
@@ -225,7 +225,7 @@ class ExplainBot:
 
     def load_dataset(self,
                      filepath: str,
-                     index_col: int,
+                     index_col: list[int],
                      target_var_name: str,
                      cat_features: list[str],
                      num_features: list[str],
