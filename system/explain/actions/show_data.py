@@ -43,9 +43,13 @@ def show_operation(conversation, parse_text, i, n_features_to_show=float("+inf")
             else:
                 rest_of_info_string += text
         """
-        instance_ids = str(list(data.index))
+        ids = "<ul>"
+        for i in data.index:
+            ids += f"<li>id <b>{i[0]}</b> for datetime {i[1]}</li>"
+        ids += "</ul>"
+
         return_string = f"{intro_text} the instance id's are:<br><br>"
-        return_string += instance_ids
+        return_string += ids
         return_string += "<br><br>Which one do you want to see?<br><br>"
 
     # If we've written additional info to this string

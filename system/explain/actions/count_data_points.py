@@ -25,7 +25,10 @@ def count_data_points(conversation, parse_text, i, **kwargs):
 
     message += "<br><br>"
     message += "Let me know if you want to see their ids."
-    ids = list(data.index)
-    rest_of_text = str(ids)
+    ids = "<ul>"
+    for i in data.index:
+        ids += f"<li>id <b>{i[0]}</b> for datetime {i[1]}</li>"
+    ids += "</ul>"
+    rest_of_text = ids
     conversation.store_followup_desc(rest_of_text)
     return message, 1
