@@ -117,7 +117,7 @@ class DatasetDescription:
 
         # Loads and processes the testing dataset
         x_values, y_values, _, _ = read_and_format_data(self.eval_file_path,
-                                                        index_col=self.index_col,
+                                                        index_col=["id", "datetime"],
                                                         target_var_name=self.target_var_name,
                                                         cat_features=None,
                                                         num_features=None)
