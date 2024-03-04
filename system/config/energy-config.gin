@@ -3,7 +3,8 @@
 #################################################
 
 # Name of the parsing model
-ExplainBot.parsing_model_name = "./llm/energy_t5-small_epoch_4_lr_0.0001_batchsize_32_optimizer_adamw_downsample_1.0"
+ExplainBot.parsing_model_name = "krkv/energy-t5-large"
+# ExplainBot.parsing_model_name = "./llm/energy_t5-large_epoch_4_lr_0.0001_batchsize_16_optimizer_adamw_downsample_1.0"
 
 # Set skip_prompts to true for quicker startup for finetuned models
 # make sure to set to false using few-shot models or finetuning
