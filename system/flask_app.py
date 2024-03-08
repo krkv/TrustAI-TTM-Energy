@@ -84,7 +84,6 @@ def log_feedback():
         "username": username
     }
 
-    BOT.log(logging_info)
     return ""
 
 
@@ -105,7 +104,6 @@ def sample_prompt():
         "requested_action_generation": action,
         "generated_prompt": prompt
     }
-    BOT.log(logging_info)
 
     return prompt
 
