@@ -152,7 +152,7 @@
       $('.all-feedback').remove();
     });
 
-    const feedback = `MessageID: ${logText} || Feedback: Negative || Username: {{ currentUserId }}`;
+    const feedback = `MessageID: ${logText} || Feedback: Negative || User data: {{ currentUserId }}`;
     logFeedback(feedback);
   }
 
@@ -161,7 +161,7 @@
       $('.all-feedback').remove();
     });
 
-    const feedback = `MessageID: ${logText} || Feedback: Insightful || Username: {{ currentUserId }}`;
+    const feedback = `MessageID: ${logText} || Feedback: Insightful || User data: {{ currentUserId }}`;
     logFeedback(feedback);
   }
 
@@ -171,7 +171,7 @@
       $('.all-feedback').remove();
     });
 
-    const feedback = `MessageID: ${logText} || Feedback: Confused || Username: {{ currentUserId }}`;
+    const feedback = `MessageID: ${logText} || Feedback: Confused || User data: {{ currentUserId }}`;
     logFeedback(feedback);
   }
 
@@ -180,7 +180,7 @@
     $('.all-feedback').fadeOut(250, function () {
       $('.all-feedback').remove();
     });
-    const feedback = `MessageID: ${logText} || Feedback: Positive || Username: {{ currentUserId }}`;
+    const feedback = `MessageID: ${logText} || Feedback: Positive || User data: {{ currentUserId }}`;
     logFeedback(feedback);
   }
 

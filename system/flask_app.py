@@ -4,6 +4,7 @@ import logging
 from logging.config import dictConfig
 import os
 import traceback
+from datetime import datetime
 
 from flask import Flask
 from flask import render_template, request, Blueprint
@@ -66,7 +67,9 @@ def home():
     """Load the explanation interface."""
     app.logger.info("Loaded Login")
     objective = BOT.conversation.describe.get_dataset_objective()
-    return render_template("index.html", currentUserId="user", datasetObjective=objective)
+    user_id = datetime.now().strftime('%d.%m.%y %H:%M:%S') + " @ " + request.headers['User-Agent']
+    app.logger.info(f"User data: {user_id}")
+    return render_template("index.html", currentUserId=user_id, datasetObjective=objective)
 
 
 @bp.route("/log_feedback", methods=['POST'])
@@ -79,11 +82,11 @@ def log_feedback():
     message = f"Feedback formatted improperly. Got: {split_feedback}"
     assert split_feedback[0].startswith("MessageID: "), message
     assert split_feedback[1].startswith("Feedback: "), message
-    assert split_feedback[2].startswith("Username: "), message
+    assert split_feedback[2].startswith("User data: "), message
 
     message_id = split_feedback[0][len("MessageID: "):]
     feedback_text = split_feedback[1][len("Feedback: "):]
-    username = split_feedback[2][len("Username: "):]
+    username = split_feedback[2][len("User data: "):]
 
     logging_info = {
         "id": message_id,
