@@ -415,20 +415,21 @@ class MegaExplainer(Explanation):
             pos_neg = "negative"
 
         if i == 0:
-            shortened_output += (f"<b>{sig[0]}</b> is the <b>most important </b>feature and has a"
+            shortened_output += (f"<b>{sig[0]}</b> is the <em>most important</em> feature and has a"
                                  f" <em>{pos_neg}</em> influence on the predictions")
 
         if i == 1:
-            shortened_output += (f"<b>{sig[0]}</b> is the <b>second</b> most important feature and has a"
+            shortened_output += (f"<b>{sig[0]}</b> is the <em>second</em> most important feature and has a"
                                  f" <em>{pos_neg}</em> influence on the predictions")
         if i == 2:
-            shortened_output += (f"<b>{sig[0]}</b> is the <b>third</b> most important feature and has a"
+            shortened_output += (f"<b>{sig[0]}</b> is the <em>third</em> most important feature and has a"
                                  f" <em>{pos_neg}</em> influence on the predictions")
 
         return shortened_output, pos_neg
 
     def format_explanations_to_string(self,
                                       feature_importances: dict,
+                                      id_map: dict,
                                       scores: dict, filtering_text: str,
                                       include_confidence_text: bool = False):
         """Formats dict of label -> feature name -> feature_importance dicts to string.
@@ -451,16 +452,17 @@ class MegaExplainer(Explanation):
         full_print_out = ""
         shortened_output = ""
         for label in feature_importances:
+            id = id_map[label]
             sig_coefs = []
             if self.class_names is not None:
                 label_name = self.class_names[label]
             else:
-                label_name = str(label)
+                label_name = str(round(label, 2))
 
             if filtering_text is not None and len(filtering_text) > 0:
-                starter_text = f"For instances with <b>{filtering_text}</b> predicted <em>{label_name}</em>:"
+                starter_text = f"For the instance id <b>{id[0]}</b> with <b>{filtering_text}</b> predicted <em>{label_name}</em>:"
             else:
-                starter_text = f"For all the instances predicted <em>{label_name}</em>"
+                starter_text = f"For the instance id <b>{id[0]}</b> predicted <em>{label_name}</em>"
 
             full_print_out += starter_text
             shortened_output += starter_text
@@ -476,15 +478,15 @@ class MegaExplainer(Explanation):
 
             # Add full list of feature importances to the comprehensive print out
             shortened_output += "<ul>"
+            full_print_out += "<ul>"
             for i, sig in enumerate(sig_coefs):
                 new_text, pos_neg = self.format_option_text(sig, i)
                 if new_text != "":
                     shortened_output += "<li>" + new_text + "</li>"
                 feature_imp = str(round(sig[1], self.rounding_precision))
-                full_print_out += f"<br>{sig[0]} ({pos_neg} influence {feature_imp})"
+                full_print_out += f"<li><b>{sig[0]}</b> ({pos_neg} influence {feature_imp})</li>"
             shortened_output += "</ul>"
-
-            full_print_out += "<br><br>"
+            full_print_out += "</ul>"
 
             # Add the accuracy rating
             score = np.median(scores[label])
@@ -510,8 +512,8 @@ class MegaExplainer(Explanation):
             shortened_output += "<br><br>"
 
         shortened_output += "I can provide a more comprehensive overview of how important"
-        shortened_output += " different features in the data are for the model's predictions, just"
-        shortened_output += " ask for more description &#129502<br><br>"
+        shortened_output += " different features in the data are for the model's predictions."
+        shortened_output += " Would you like to see it?<br><br>"
 
         return full_print_out, shortened_output
 
@@ -552,6 +554,7 @@ class MegaExplainer(Explanation):
 
         # The same as above except for scores
         scores = {}
+        id_map = {}
         for i, current_id in enumerate(ids):
 
             # store the coefficients of the explanation
@@ -561,6 +564,7 @@ class MegaExplainer(Explanation):
             # Add the label if it is not in the dictionary
             if label not in feature_importances:
                 feature_importances[label] = {}
+                id_map[label] = current_id
 
             for tup in list_exp:
                 if tup[0] not in feature_importances[label]:
@@ -573,6 +577,7 @@ class MegaExplainer(Explanation):
             scores[label].append(explanations[ids[i]].score)
 
         full_summary, short_summary = self.format_explanations_to_string(feature_importances,
+                                                                         id_map,
                                                                          scores,
                                                                          filtering_text)
         return full_summary, short_summary
