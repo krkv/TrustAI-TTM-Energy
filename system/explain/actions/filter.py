@@ -174,12 +174,12 @@ def filter_operation(conversation, parse_text, i, is_or=False, **kwargs):
         # If id never appears in index, set the data to empty
         # other functions will handle appropriately and indicate
         # they can't do anything.
-        if feature_value not in updated_dset['X'].index.levels[0].values:
+        if feature_value not in updated_dset['X'].index.get_level_values('id'):
             updated_dset['X'] = []
             updated_dset['y'] = []
         else:
-            updated_dset['X'] = updated_dset['X'].loc[updated_dset['X'].index.levels[0] == feature_value]
-            updated_dset['y'] = updated_dset['y'].loc[updated_dset['y'].index.levels[0] == feature_value]
+            updated_dset['X'] = updated_dset['X'].iloc[updated_dset['X'].index.get_level_values('id') == feature_value]
+            updated_dset['y'] = updated_dset['y'].iloc[updated_dset['y'].index.get_level_values('id') == feature_value]
         interp_parse_text = f"id equal to {feature_value}"
     elif operation == "predictionfilter":
         updated_dset, interp_parse_text = prediction_filter(temp_dataset, conversation, feature_name)
