@@ -8,7 +8,8 @@ def predict_operation(conversation, parse_text, i, max_num_preds_to_print=1, **k
     """The prediction operation."""
     model = conversation.get_var('model').contents
     data = conversation.temp_dataset.contents['X']
-    indexes = data.index.levels[0].values
+    indexes = data.index.get_level_values('id')
+    dates = data.index.get_level_values('datetime')
 
     if len(conversation.temp_dataset.contents['X']) == 0:
         return 'There are no instances that meet this description!', 0
@@ -35,7 +36,7 @@ def predict_operation(conversation, parse_text, i, max_num_preds_to_print=1, **k
 
         if conversation.class_names is None:
             for j, pred in enumerate(model_predictions):
-                return_s += f"<li>id <b>{indexes[j]}</b> is predicted <b>{round(pred, 2)}</b></li>"
+                return_s += f"<li>id <b>{indexes[j]}</b> ({dates[j]}) is predicted <b>{round(pred, 2)}</b></li>"
 
         else:
             unique_preds = np.unique(model_predictions)
