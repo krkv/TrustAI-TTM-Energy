@@ -60,7 +60,7 @@ class Explanation:
         if self.class_names is not None:
             label_name = self.class_names[label]
         else:
-            label_name = str(label)
+            label_name = str(round(label, 2))
         return label_name
 
     def update_cache_size(self, new_cache_size: int):
@@ -293,29 +293,32 @@ class TabularDice(Explanation):
         output_string = f"{filtering_description}, the original prediction is "
         output_string += f"<em>{original_label}</em>. "
         output_string += "Here are some options to change the prediction of this instance."
-        output_string += "<br><br>"
+        output_string += "<ul>"
 
         additional_options = "Here are some more options to change the prediction of"
-        additional_options += f" instance id {str(key)}.<br><br>"
+        additional_options += f" instance id {str(key[0])}."
+        additional_options += "<ul>"
 
-        output_string += "First, if you <em>"
+        output_string += "<li>First, if you <em>"
         transition_words = ["Further,", "Also,", "In addition,", "Furthermore,"]
 
         for i, c_id in enumerate(final_cfe_ids):
             # Stop the summary in case its getting too large
             if i < self.num_in_short_summary:
                 if i != 0:
-                    output_string += f"{np.random.choice(transition_words)} if you <em>"
+                    output_string += f"<li>{np.random.choice(transition_words)} if you <em>"
                 output_string += self.get_change_string(final_cfes.loc[[c_id]], original_instance)
                 new_prediction = self.get_label_text(new_predictions[i])
-                output_string += f"</em>, the model will predict {new_prediction}.<br><br>"
+                output_string += f"</em>, the model will predict <b>{new_prediction}</b>.</li>"
             else:
-                additional_options += "If you <em>"
+                additional_options += "<li>If you <em>"
                 additional_options += self.get_change_string(final_cfes.loc[[c_id]], original_instance)
                 new_prediction = self.get_label_text(new_predictions[i])
-                additional_options += f"</em>, the model will predict {new_prediction}.<br><br>"
+                additional_options += f"</em>, the model will predict <b>{new_prediction}</b>.</li>"
 
-        output_string += "If you want some more options, just ask &#129502"
+        output_string += "</ul>"
+        additional_options += "</ul>"
+        output_string += "<br>Would you like to see some more options?"
 
         return additional_options, output_string
 
