@@ -27,20 +27,22 @@ def data_operation(conversation, parse_text, i, **kwargs):
 
     # Create more in depth description of the data, summarizing a few statistics
     rest_of_text = ""
-    rest_of_text += "Here's a more in depth summary of the data.<br><br>"
+    rest_of_text += "Here's a more in depth summary of the data."
+    rest_of_text += "<ul>"
 
     for i, f in enumerate(f_names):
         mean = round(df[f].mean(), conversation.rounding_precision)
         std = round(df[f].std(), conversation.rounding_precision)
         min_v = round(df[f].min(), conversation.rounding_precision)
         max_v = round(df[f].max(), conversation.rounding_precision)
-        new_feature = (f"{f}: The mean is {mean}, one standard deviation is {std},"
-                       f" the minimum value is {min_v}, and the maximum value is {max_v}")
+        new_feature = (f"<li><b>{f}</b></li>: The mean is <em>{mean}</em>, one standard deviation is <em>{std}</em>,"
+                       f" the minimum value is <em>{min_v}</em>, and the maximum value is <em>{max_v}</em></li>")
         new_feature += "<br><br>"
 
         rest_of_text += new_feature
+    rest_of_text += "</ul>"
 
-    text += "Let me know if you want to see an in depth description of the dataset statistics.<br><br>"
+    text += "Would you like to see an in depth description of the dataset statistics.<br><br>"
     conversation.store_followup_desc(rest_of_text)
 
     return text, 1
