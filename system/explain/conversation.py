@@ -105,10 +105,7 @@ class Conversation:
 
     def get_class_name_from_label(self, label: int):
         """Gets the class name from label"""
-        if self.class_names is None:
-            return str(label)
-        else:
-            return self.class_names[label]
+        return str(round(label, 2))
 
     def set_user_name(self, username: str):
         self.username = username

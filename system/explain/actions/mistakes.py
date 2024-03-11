@@ -15,7 +15,7 @@ def average_difference(y_true, y_pred):
     return round(difference_sum / total_num, 2)
 
 def correct_pred(y_true, y_pred):
-    return abs(y_true - y_pred) < 200
+    return abs(y_true - y_pred) < 100
     
 
 def one_mistake(y_true, y_pred, conversation, intro_text):
@@ -37,7 +37,17 @@ def sample_mistakes(y_true, y_pred, conversation, intro_text, ids):
     else:
         difference_avg = average_difference(y_true, y_pred)
         total_num = len(y_true)
-        return_string = (f"{intro_text} the model prediction is incorrect on average by {difference_avg} over {total_num} samples.")
+        correct_data = correct_pred(y_true, y_pred)
+        incorrect_ids = ids[correct_data != True]
+        
+        return_string = (f"{intro_text} the model prediction is off on average by {difference_avg} over {total_num} samples. "
+                         f"Based on the fuzzy definition of correctness, "
+                         f"here are the ids of instances the model predicts incorrectly:")
+        
+        return_string += "<ul>"
+        for id in incorrect_ids:
+            return_string += f"<li>{id[0]}</li>"
+        return_string += "</ul>"
 
     return return_string
 
