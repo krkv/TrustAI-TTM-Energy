@@ -67,7 +67,8 @@ def home():
     """Load the explanation interface."""
     app.logger.info("Loaded Login")
     objective = BOT.conversation.describe.get_dataset_objective()
-    user_id = datetime.now().strftime('%d.%m.%y %H:%M:%S') + " @ " + request.headers['User-Agent']
+    session = request.args['session']
+    user_id = f"{session} ({datetime.now().strftime('%d.%m.%y %H:%M:%S')}) @ {request.headers['User-Agent']}"
     app.logger.info(f"User data: {user_id}")
     return render_template("index.html", currentUserId=user_id, datasetObjective=objective)
 
