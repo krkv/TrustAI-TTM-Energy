@@ -8,22 +8,25 @@ from sklearn.tree import DecisionTreeClassifier
 
 from explain.actions.utils import get_parse_filter_text, get_rules
 
+def average_difference(y_true, y_pred):
+    """ Calculate average difference between y_true and y_pred"""
+    difference_sum = np.sum(abs(y_true - y_pred))
+    total_num = len(y_true)
+    return round(difference_sum / total_num, 2)
+
+def correct_pred(y_true, y_pred):
+    return abs(y_true - y_pred) < 200
+    
 
 def one_mistake(y_true, y_pred, conversation, intro_text):
     """One mistake text"""
     label = y_true[0]
     prediction = y_pred[0]
+        
+    difference = round(abs(label - prediction), 2)
 
-    label_text = conversation.get_class_name_from_label(label)
-    predict_text = conversation.get_class_name_from_label(prediction)
-
-    if label == prediction:
-        correct_text = "correct"
-    else:
-        correct_text = "incorrect"
-
-    return_string = (f"{intro_text} the model predicts <em>{predict_text}</em> and the ground"
-                     f" label is <em>{label_text}</em>, so the model is <b>{correct_text}</b>!")
+    return_string = (f"{intro_text} the model predicts <em>{str(prediction)}</em> and the ground"
+                     f" label is <em>{str(label)}</em>, so the prediction is off by <b>{difference}</b>!")
     return return_string
 
 
@@ -32,14 +35,9 @@ def sample_mistakes(y_true, y_pred, conversation, intro_text, ids):
     if len(y_true) == 1:
         return_string = one_mistake(y_true, y_pred, conversation, intro_text)
     else:
-        incorrect_num = np.sum(y_true != y_pred)
+        difference_avg = average_difference(y_true, y_pred)
         total_num = len(y_true)
-        incorrect_data = ids[y_true != y_pred]
-
-        error_rate = round(incorrect_num / total_num, conversation.rounding_precision)
-        return_string = (f"{intro_text} the model is incorrect {incorrect_num} out of {total_num} "
-                         f"times (error rate {error_rate}). Here are the ids of instances the model"
-                         f" predicts incorrectly:<br><br>{incorrect_data}")
+        return_string = (f"{intro_text} the model prediction is incorrect on average by {difference_avg} over {total_num} samples.")
 
     return return_string
 
@@ -64,7 +62,8 @@ def typical_mistakes(data, y_true, y_pred, conversation, intro_text, ids):
     if len(y_true) == 1:
         return_string = one_mistake(y_true, y_pred, conversation, intro_text)
     else:
-        incorrect_vals = y_true != y_pred
+        correct_vals = correct_pred(y_true, y_pred)
+        incorrect_vals = correct_vals != True
         return_options = train_tree(data, incorrect_vals)
 
         if len(return_options) == 0:
@@ -100,7 +99,8 @@ def show_mistakes_operation(conversation, parse_text, i, n_features_to_show=floa
         return "There are no instances in the data that meet this description.<br><br>", 0
 
     y_pred = model.predict(data)
-    if np.sum(y_true == y_pred) == len(y_true):
+    correct_vals = correct_pred(y_true, y_pred)
+    if np.sum(correct_vals) == len(y_true):
         if len(y_true) == 1:
             return f"{intro_text} the model predicts correctly!<br><br>", 1
         else:
