@@ -25,8 +25,8 @@ def one_mistake(y_true, y_pred, conversation, intro_text):
         
     difference = round(abs(label - prediction), 2)
 
-    return_string = (f"{intro_text} the model predicts <em>{str(prediction)}</em> and the ground"
-                     f" label is <em>{str(label)}</em>, so the prediction is off by <b>{difference}</b>!")
+    return_string = (f"{intro_text} the model predicts <em>{str(round(prediction, 2))}</em> and the ground"
+                     f" label is <em>{str(round(label, 2))}</em>, so the prediction is off by <b>{difference}</b>!")
     return return_string
 
 
