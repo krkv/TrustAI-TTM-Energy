@@ -374,11 +374,35 @@ parse {
   background: #eee;
 }
 
+.demoContent {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  padding: 5px;
+  background: #eee;
+  font-size: smaller;
+  text-align: center;
+}
+
 .genOptions {
   text-align: center;
   padding: 5px;
   cursor: pointer;
   background: #eee;
+}
+
+.demoTitle {
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+  background: #eee;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.prompt-button {
+  font-size: 12px;
 }
 
 .shuffle {
@@ -439,16 +463,6 @@ parse {
   display: table;
   width: 100%;
   border-spacing: 3px;
-}
-
-.feedback-opener {
-  font-size: 14px;
-  display: table-cell;
-  text-align: right;
-  position: relative;
-  background-color: lightblue;
-  padding: 5px;
-  border-radius: 5px;
 }
 
 .pin-button {
@@ -565,8 +579,8 @@ parse {
   cursor: pointer;
   display: inline-block;
   font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
-  font-size: 16px;
-  font-weight: 800;
+  font-size: 12px;
+  font-weight: 600;
   line-height: 16px;
   min-height: 20px;
   outline: 0;
@@ -578,6 +592,25 @@ parse {
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
+}
+
+.feedback-opener {
+  font-size: 12px;
+  font-weight: 600;
+  display: block;
+  text-align: right;
+  position: relative;
+  background-color: rgba(63, 103, 232, 0.96);
+  padding: 6px 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  color: #fff;
+  min-width: 120px;
+  text-align: center;
+}
+
+.feedback-opener:hover {
+  background-color: #bdbdbd;
 }
 
 /* Dropdown Button */

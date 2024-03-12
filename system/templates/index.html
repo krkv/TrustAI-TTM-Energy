@@ -42,6 +42,38 @@
           placeholder="Enter your command! Use the ↑ arrow and ↓ arrow to cycle previous commands.">
         <button type="submit" class="ttm-send-btn">Send</button>
       </form>
+      <span class="demoTitle">Toggle example prompts</span>
+      <div class="demoContent">
+        <div class="dots-cont" , id="generation-loading"> <span class="dot dot-1"></span> <span
+            class="dot dot-2"></span> <span class="dot dot-3"></span> </div>
+        <div class="buttons" , id="generation-buttons">
+          <button id="idea-important" class="idea-button prompt-button" onclick="setPrompt('What can you do?')">What can
+            you do?</button>
+          <button id="idea-important" class="idea-button prompt-button"
+            onclick="setPrompt('Describe the dataset')">Describe the dataset</button>
+          <button id="idea-important" class="idea-button prompt-button"
+            onclick="setPrompt('Show the in depth description')">Show the in depth description</button>
+          <button id="idea-important" class="idea-button prompt-button"
+            onclick="setPrompt('What are the most important features?')">What are the most important features?</button>
+          <button id="idea-important" class="idea-button prompt-button" onclick="setPrompt('Show the mistakes')">Show
+            the mistakes</button>
+          <button id="idea-important" class="idea-button prompt-button"
+            onclick="setPrompt('Show me the data for the id 10')">Show me the data for the id 10</button>
+          <button id="idea-important" class="idea-button prompt-button"
+            onclick="setPrompt('What is the prediction?')">What is the prediction?</button>
+          <button id="idea-important" class="idea-button prompt-button"
+            onclick="setPrompt('Is this prediction correct?')">Is this prediction correct?</button>
+          <button id="idea-important" class="idea-button prompt-button"
+            onclick="setPrompt('How could you flip this prediction?')">How could you flip this prediction?</button>
+          <button id="idea-important" class="idea-button prompt-button" onclick="setPrompt('Show all data')">Show all
+            data</button>
+          <button id="idea-important" class="idea-button prompt-button"
+            onclick="setPrompt('How do features interact?')">How do features interact?</button>
+          <button id="idea-important" class="idea-button prompt-button"
+            onclick="setPrompt('Predict id 10 with outdoor_temperature set to 30')">Predict id 10 with
+            outdoor_temperature set to 30</button>
+        </div>
+      </div>
     </section>
     <section class="pins" id="my-pins">
       <header class="pins-header">
@@ -66,9 +98,15 @@
   $('.genOptions').click(function (e) {
     $('.slideDown').slideToggle();
   });
+  $('.demoTitle').click(function (e) {
+    $('.demoContent').slideToggle();
+  });
 </script>
 
 <script>
+  function setPrompt(p) {
+    ttmInput.value = p;
+  }
   function doSample(rawAction) {
     let username = '{{ currentUserId }}'
     let dataPackage = { action: rawAction, thisUserName: username }
@@ -236,7 +274,7 @@
               <div class="happy-sad-unsure-response">
                 <div class="all-feedback">
                 <div class="feedback-opener">
-                    Evaluate
+                    Evaluate answer
                   </div>
                    <div class="feedback-form" >
                         <button title="positive" class="unhappy-button" id="yesbutton" onclick="answeredYes('${logText}');">👍</button>
