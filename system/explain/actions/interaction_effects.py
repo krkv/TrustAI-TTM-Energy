@@ -18,14 +18,17 @@ def get_text(interactions: list[tuple], feature_names: list, parse_op: str):
 
     output = (f"{filtering_text} most significant feature interaction effects are as follows, "
               "where <em>higher</em> values correspond to <em>greater</em> interactions.<br><br>")
-
+    
+    output += "<ul>"
+    
     for interaction in interactions:
         i, j, effect = interaction
         f1, f2 = feature_names[i], feature_names[j]
         effect = round(effect, 3)
-        this_interaction = f"<b>{f1}</b>+<b>{f2}</b>: {effect}<br>"
+        this_interaction = f"<li><b>{f1}</b>+<b>{f2}</b>: {effect}</li>"
         output += this_interaction
-
+        
+    output += "</ul>"
     return output
 
 
