@@ -11,7 +11,7 @@ def data_operation(conversation, parse_text, i, **kwargs):
     f_names = list(conversation.temp_dataset.contents['X'].columns)
     f_string = "<ul>"
     for fn in f_names:
-        f_string += f"<li>{fn}</li>"
+        f_string += f"<li><b>{fn}</b></li>"
     f_string += "</ul>"
     df = conversation.temp_dataset.contents['X']
     text += f"The exact feature names in the data are listed as follows:{f_string}<br><br>"
@@ -35,14 +35,14 @@ def data_operation(conversation, parse_text, i, **kwargs):
         std = round(df[f].std(), conversation.rounding_precision)
         min_v = round(df[f].min(), conversation.rounding_precision)
         max_v = round(df[f].max(), conversation.rounding_precision)
-        new_feature = (f"<li><b>{f}</b></li>: The mean is <em>{mean}</em>, one standard deviation is <em>{std}</em>,"
+        new_feature = (f"<li><b>{f}</b>: the mean is <em>{mean}</em>, one standard deviation is <em>{std}</em>,"
                        f" the minimum value is <em>{min_v}</em>, and the maximum value is <em>{max_v}</em></li>")
         new_feature += "<br><br>"
 
         rest_of_text += new_feature
     rest_of_text += "</ul>"
 
-    text += "Would you like to see an in depth description of the dataset statistics.<br><br>"
+    text += "Would you like to see an in depth description of the dataset statistics?<br><br>"
     conversation.store_followup_desc(rest_of_text)
 
     return text, 1
