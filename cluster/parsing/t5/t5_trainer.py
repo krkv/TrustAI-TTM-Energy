@@ -18,6 +18,8 @@ from parsing.t5.get_data_set import load_explainbot_dataset_pd
 from parsing.t5.t5_dataset import T5Dataset
 from parsing.t5.t5_training_val_loops import train, validate
 
+from datetime import datetime
+
 
 def make_decoder_only(model):
     """Make decoder only."""
@@ -100,7 +102,8 @@ def t5_trainer(t5_params, down_sample_pct: float = None, model_id: int = None, s
     """T5 Training loop"""
 
     run = wandb.init(project="project-ttm")
-    wandb.run.name = f"{make_safe(t5_params.model_name)}-{make_safe(t5_params.dataset_name)}-training-debug-{t5_params.debug}"
+    timestamp = datetime.now().strftime("%Y-%m-dY-%H:%M:%S")
+    wandb.run.name = f"{make_safe(t5_params.model_name)}-{make_safe(t5_params.dataset_name)}-train-{timestamp}"
 
     if t5_params.verbose:
         print("Loading model and tokenizer...", flush=True)
