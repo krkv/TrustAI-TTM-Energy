@@ -6,7 +6,7 @@ provide more tailored dataset specified feedback
 import gin
 from typing import Any
 
-from sklearn.metrics import explained_variance_score
+from sklearn.metrics import explained_variance_score, mean_squared_error, root_mean_squared_error
 
 from explain.utils import read_and_format_data
 
@@ -66,7 +66,9 @@ class DatasetDescription:
                        y_pred: Any,
                        metric_name: str,
                        rounding_precision: int,
-                       data_name: str) -> str:
+                       data_name: str,
+                       model: Any,
+                       data: Any) -> str:
         """Computes model score and returns text describing the outcome.
 
         Arguments:
@@ -82,6 +84,12 @@ class DatasetDescription:
             score = explained_variance_score(y_true, y_pred)
             # sklearn defaults to accuracy represented as decimal. convert this to %
             score *= 100
+        elif metric_name == "mean squared error":
+            score = mean_squared_error(y_true, y_pred)
+        elif metric_name == "root mean squared error":
+            score = root_mean_squared_error(y_true, y_pred)
+        elif metric_name == "coefficient of determination (r2 score)":
+            score = model.score(data, y_true)
         else:
             raise NameError(f"Unknown metric {metric_name}")
 
@@ -130,5 +138,7 @@ class DatasetDescription:
                                                   y_pred,
                                                   metric_name,
                                                   rounding_precision,
-                                                  "the data")
+                                                  "the data",
+                                                  model,
+                                                  x_values)
         return performance_summary

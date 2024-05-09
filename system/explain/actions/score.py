@@ -29,7 +29,9 @@ def score_operation(conversation, parse_text, i, **kwargs):
                                                 y_pred,
                                                 metric,
                                                 conversation.rounding_precision,
-                                                data_name)
+                                                data_name,
+                                                model,
+                                                data)
 
     text += "<br><br>"
     return text, 1
