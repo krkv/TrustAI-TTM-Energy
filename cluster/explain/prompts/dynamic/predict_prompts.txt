@@ -106,15 +106,6 @@ Parsed: filter {cat_features} true and predict [E]
 User: What are the predictions on the {cat_features}?
 Parsed: filter {cat_features} true and predict [E]
 
-User: Show the predictions on people older than 20
-Parsed: filter age greater than 20 and predict [E]
-
-User: what are the predictions on people older than thirty
-Parsed: filter age greater than 30 and predict [E]
-
-User: display the predictions on people older than 20 or that have {num_features} less than {num_values}
-Parsed: filter age greater than 20 and filter {num_features} less than {num_values} and predict [E]
-
 User: show prediction of id 120
 Parsed: filter id 120 and predict [E]
 

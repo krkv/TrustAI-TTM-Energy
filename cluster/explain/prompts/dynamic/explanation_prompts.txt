@@ -79,7 +79,7 @@ Parsed: filter id 32 and explain features and explain cfe [E]
 User: How did you decide what to predict for id 78 and what could someone do to change this prediction?
 Parsed: filter id 78 and explain features and explain cfe [E]
 
-User: Explain the reasoning and how to flip the predictions for data point id 98
+User: Explain the reasoning and how to change the predictions for data point id 98
 Parsed: filter id 98 and explain features and explain cfe [E]
 
 User: Why does the model predict data 34? What does it predict for this instance?
@@ -118,31 +118,13 @@ Parsed: filter {cat_features} true or filter {num_features} equal to {num_values
 User: Why does the model predict instances that have a {cat_features} or that do not have {num_values} {num_features}?
 Parsed: filter {cat_features} true or filter {num_features} not equal to {num_values} and explain features [E]
 
-User: What are the explanations for people older than 25?
-Parsed: filter age greater than 25 and explain features [E]
-
-User: Run the explanainer for people younger than 30
-Parsed: filter age less than 30 and explain features [E]
-
-User: Why does the model predict people older than 20 and where {num_features} is set to {num_values}
-Parsed: filter age greater than 20 and {num_features} equal to {num_values} [E]
-
-User: Explain the predictions on people older than 20
-Parsed: filter age greater than 20 and explain features [E]
-
-User: Explain the predictions on people older than thirty
-Parsed: filter age greater than 30 and explain features [E]
-
-User: Explain the predictions on people older than 20 or that have {num_features} less than {num_values}
-Parsed: filter age greater than 20 and filter {num_features} less than {num_values} and explain features [E]
-
 User: explain the model's predictions on the data
 Parsed: explain features [E]
 
 User: show me the model's rationale for making predictions on all the data
 Parsed: explain features [E]
 
-User: explain the model's predictions on people with a {num_features} over {num_values}
+User: explain the model's predictions on instances with a {num_features} over {num_values}
 Parsed: filter {num_features} greater than {num_values} and explain features [E]
 
 User: why do you predict instance id 31
@@ -154,50 +136,17 @@ Parsed: filter id 987 and explain features [E]
 User: explain id 15
 Parsed: filter id 15 and explain features [E]
 
-User: why is id 560 predicted {class_names}
-Parsed: filter id 560 and explain features [E]
-
-User: why are those with {num_values} {num_features} predicted {class_names}
-Parsed: filter {num_features} equal to {num_values} and explain features [E]
-
 User: why does the model predict id 120
 Parsed: filter id 120 and explain features [E]
 
 User: why does the model predict id 32
 Parsed: filter id 32 and explain features [E]
 
-User: why are those with {num_features} greater than {num_values} but not greater than {num_values} predicted {class_names}
-Parsed: filter {num_features} greater than {num_values} and filter {num_features} less than {num_values} and explain features [E]
-
-User: how do you decide whether someone is {class_names}
-Parsed: explain features [E]
-
-User: How do you figure out if data points are {class_names}
-Parsed: explain features [E]
-
-User: How do you figure out if individuals {class_names}
-Parsed: explain features [E]
-
-User: How do you figure out if cars are {class_names}
-Parsed: explain features [E]
-
-User: for people with {num_features} greater that {num_values}, how did the model come to the conclusion on their predictions?
+User: for samples with {num_features} greater that {num_values}, how did the model come to the conclusion on their predictions?
 Parsed: filter {num_features} greater than {num_values} and explain features [E]
 
 User: for data where {num_features} is less than {num_values}, what is the reasoning process of the model?
 Parsed: filter {num_features} less than {num_values} and explain features [E]
-
-User: in what ways do you determine if data will be predicted {class_names}?
-Parsed: explain features [E]
-
-User: in what ways do you determine if data will be predicted {class_names} for {cat_features}?
-Parsed: filter {cat_features} true and explain features [E]
-
-User: what is the reasoning for figuring out if {cat_features} or {cat_features} are to be predicted {class_names}?
-Parsed: filter {cat_features} true or filter {cat_features} true and explain features [E]
-
-User: what is the motivation for figuring out if {cat_features} are to be predicted {class_names}?
-Parsed: filter {cat_features} true and explain features [E]
 
 User: what aspects of the data make you more confident in your predictions?
 Parsed: explain features [E]
@@ -205,23 +154,11 @@ Parsed: explain features [E]
 User: how do you make decisions on those that have {num_features} more than {num_values}?
 Parsed: filter {num_features} greater than {num_values} and explain features [E]
 
-User: what methods do you use to come to predict {class_names}?
-Parsed: explain features [E]
-
-User: what methods do you use to come to predict {class_names} for those that are {cat_features}?
-Parsed: filter {cat_features} true and explain features [E]
-
 User: what are the rationales and reasoning strategies you leverage?
 Parsed: explain features [E]
 
 User: for those with {num_features} of {num_values} and {cat_features}, how do you use the data to inform outcomes?
 Parsed: filter {num_features} equal to {num_values} and filter {cat_features} true and explain features [E]
-
-User: what informs your understanding that, for those with {num_features} above {num_values}, they will be {class_names}?
-Parsed: filter {num_features} greater than {num_values} and explain features [E]
-
-User: describe your motivating factors for deciding {class_names} for both {cat_features} and {cat_features}
-Parsed: filter {cat_features} true or filter {cat_features} true and explain features [E]
 
 User: could you let me know why you predicted {filter_text}?
 Parsed: {filter_parse} and explain features [E]
@@ -238,47 +175,11 @@ Parsed: {filter_parse} and explain features [E]
 User: what's your motivation for deciding the predictions of {filter_text}
 Parsed: {filter_parse} and explain features [E]
 
-User: what set of factors do you leverage on {filter_text} to figure out if these people are {class_names}?
-Parsed: {filter_parse} and explain features [E]
-
-User: what set of reasoning do you use to determine if {filter_text} are {class_names}?
-Parsed: {filter_parse} and explain features [E]
-
 User: what aspects of the data do you consider when reasoning about {filter_text} to make decisions?
-Parsed: {filter_parse} and explain features [E]
-
-User: what set of factors do you take into consideration when determining if {filter_text} are {class_names}?
-Parsed: {filter_parse} and explain features [E]
-
-User: how do you decide whether {filter_text} will be {class_names}
 Parsed: {filter_parse} and explain features [E]
 
 User: can you provide me with reasoning for the model's predictions on {filter_text}?
 Parsed: {filter_parse} and explain features [E]
 
-User: how do you figure out if someone who is a {filter_text} will be {class_names}?
-Parsed: {filter_parse} and explain features [E]
-
-User: what set of factors do you leverage on {filter_text} to figure out if these people are {class_names}
-Parsed: {filter_parse} and explain features [E]
-
-User: what set of reasoning do you use to determine if {filter_text} are {class_names}
-Parsed: {filter_parse} and explain features [E]
-
 User: what aspects of the data do you consider when reasoning about {filter_text} to make decisions
-Parsed: {filter_parse} and explain features [E]
-
-User: what set of factors do you take into consideration when determining if {filter_text} are {class_names}
-Parsed: {filter_parse} and explain features [E]
-
-User: how do you decide whether {filter_text} will be {class_names}
-Parsed: {filter_parse} and explain features [E]
-
-User: how do you figure out if someone who is a {filter_text} will be {class_names}
-Parsed: {filter_parse} and explain features [E]
-
-User: in cases where {filter_text}, how do you determine if {class_names}
-Parsed: {filter_parse} and explain features [E]
-
-User: in those situations where {filter_text}, what are the strategies you use to figure out if the correct prediction is {class_names}
 Parsed: {filter_parse} and explain features [E]

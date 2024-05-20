@@ -61,7 +61,7 @@ filter {num_features} greater than {num_values}
 a {cat_features}
 filter {cat_features} true
 
-{num_features} warmer than {num_values} and {num_features} yocolderunger than {num_values}
+{num_features} warmer than {num_values} and {num_features} colder than {num_values}
 filter {num_features} greater than {num_values} and filter {num_features} less than {num_values}
 
 id 61

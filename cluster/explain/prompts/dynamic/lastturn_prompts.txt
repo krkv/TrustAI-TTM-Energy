@@ -4,15 +4,6 @@ Parsed: previousfilter and explain feature importance [E]
 User: What are the predictions?
 Parsed: previousfilter and predict [E]
 
-User: What is the probability of this prediction?
-Parsed: previousfilter and likelihood [E]
-
-User: what is the probability of this prediction
-Parsed: previousfilter and likelihood [E]
-
-User: probability of this prediction
-Parsed: previousfilter and likelihood [E]
-
 User: What are the predictions and explanations?
 Parsed: previousfilter and predict and explain feature importance[E]
 
@@ -24,15 +15,6 @@ Parsed: previousfilter and explain features [E]
 
 User: Why do you predict this instance?
 Parsed: previousfilter and explain features [E]
-
-User: What is the probability of this instance being predicted {class_names}
-Parsed: previousfilter and likelihood [E]
-
-User: How likely is it that the model predicts this instance as {class_names}
-Parsed: previousfilter and likelihood [E]
-
-User: probability of this instance getting predicted "{class_names}"
-Parsed: previousfilter and likelihood [E]
 
 User: Why do you predict these instances?
 Parsed: previousfilter and explain features [E]
@@ -133,21 +115,6 @@ Parsed: previousfilter and change {num_features} increase 515 and previousoperat
 User: What would happen if these instances were not {cat_features}?
 Parsed: previousfilter and change {cat_features} false [E]
 
-User: How likely are these instances to recieve the outcome {class_names}?
-Parsed: previousfilter and likelihood [E]
-
-User: What is the likelihood of them getting scored {class_names}?
-Parsed: previousfilter and likelihood [E]
-
-User: How likely is it these instances are predicted as {class_names}?
-Parsed: previousfilter and likelihood [E]
-
-User: What is the probability these instances get predicted as {class_names}?
-Parsed: previousfilter and likelihood [E]
-
-User: What is the probability of the previous data getting predicted as {class_names}?
-Parsed: previousfilter and likelihood [E]
-
 User: What would happen if you set {num_features} to {num_values} for instance id 115?
 Parsed: filter id 115 and change {num_features} set {num_values} and previousoperation [E]
 
@@ -171,18 +138,6 @@ Parsed: previousfilter and predict [E]
 
 User: what's the prediction for this instance
 Parsed: previousfilter and predict [E]
-
-User: what is the likelihood they're predicted {class_names}?
-Parsed: previousfilter and likelihood [E]
-
-User: what's the probability they get the predictions of {class_names}?
-Parsed: previousfilter and likelihood [E]
-
-User: what's the odds they are {class_names}?
-Parsed: previousfilter and likelihood [E]
-
-User: {class_names} is how likely for them?
-Parsed: previousfilter and likelihood [E]
 
 User: what are the labels?
 Parsed: previousfilter and labels [E]
@@ -216,12 +171,6 @@ Parsed: previousfilter and explain features [E]
 
 User: yet, how did you arrive at this prediction
 Parsed: previousfilter and explain features [E]
-
-User: how about the prediction probabilities
-Parsed: previousfilter and likelihood [E]
-
-User: prediction probabilities for that data
-Parsed: previousfilter and likelihood [E]
 
 User: what's the most important feature for this prediction
 Parsed: previousfilter and important topk 1 [E]
@@ -292,15 +241,6 @@ Parsed: previousfilter and mistake typical [E]
 User: how accurate is my model on this data?
 Parsed: previousfilter and score accuracy [E]
 
-User: how precise is my model on this data?
-Parsed: previousfilter and score precision [E]
-
-User: how often is my model correct on this data?
-Parsed: previousfilter and score precision [E]
-
-User: is my model frequently correct on this data?
-Parsed: previousfilter and score precision [E]
-
 User: what mistakes do the model typically make on this data?
 Parsed: previousfilter and mistake typical [E]
 
@@ -321,24 +261,6 @@ Parsed: previousfilter and mistake typical [E]
 
 User: which are the subgroup populations often predicted incorrectly?
 Parsed: previousfilter and mistake typical [E]
-
-User: what's the label distribution on this data?
-Parsed: previousfilter and statistic target [E]
-
-User: what's the label frequencies on this data?
-Parsed: previousfilter and statistic target [E]
-
-User: what's the label distribution on this population?
-Parsed: previousfilter and statistic target [E]
-
-User: what's the label frequencies on this population?
-Parsed: previousfilter and statistic target [E]
-
-User: what's the target variable distribution on this subset?
-Parsed: previousfilter and statistic target [E]
-
-User: what's the target variable frequencies on this subset?
-Parsed: previousfilter and statistic target [E]
 
 User: what's the statistics of {num_features} in this subset?
 Parsed: previousfilter and statistic {num_features} [E]

@@ -142,18 +142,6 @@ Parsed: {filter_parse} and statistic {num_features} [E]
 User: what's the statistics of {num_features} for data where {filter_text}?
 Parsed: {filter_parse} and statistic {num_features} [E]
 
-User: what are the label frequencies
-Parsed: statistic target [E]
-
-User: what are the class frequencies
-Parsed: statistic target [E]
-
-User: what are the gold label frequencies
-Parsed: statistic target [E]
-
-User: what are the gold target frequencies
-Parsed: statistic target [E]
-
 User: describe the {num_features} feature
 Parsed: define {num_features} [E]
 

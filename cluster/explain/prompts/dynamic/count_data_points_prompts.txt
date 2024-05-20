@@ -52,16 +52,16 @@ Parsed: filter {num_features} less than {num_values} and countdata [E]
 User: for data points where {num_features} is greater than {num_values}, what's the total num data points fitting this description?
 Parsed: filter {num_features} greater than {num_values} and countdata [E]
 
-User: how many people have {filter_text}
+User: how many instances have {filter_text}
 Parsed: {filter_parse} and countdata [E]
 
-User: how many people are {filter_text}
+User: how many instances are {filter_text}
 Parsed: {filter_parse} and countdata [E]
 
-User: what's the number of {filter_text} people
+User: what's the number of {filter_text} data points
 Parsed: {filter_parse} and countdata [E]
 
-User: tell me how many instances in the data have {filter_text}
+User: tell me how many ids in the data have {filter_text}
 Parsed: {filter_parse} and countdata [E]
 
 User: for {filter_text}, how many instances in the data are there?
