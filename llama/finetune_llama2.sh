@@ -10,6 +10,6 @@
 module load any/python/3.9.9
 source ~/ttm/llama/venv_llama/bin/activate
 
-srun python ~/ttm/llama-recipes/recipes/finetuning/finetuning.py --dataset "custom_dataset" --custom_dataset.file ~/ttm/llama/energy-dataset/energy_dataset.py --use_peft --peft_method lora --quantization --model_name meta-llama/Llama-2-7b-chat-hf --output_dir ~/ttm/llama/models/output --use_wandb
+srun python ~/ttm/llama/llama-recipes/recipes/finetuning/finetuning.py --dataset "custom_dataset" --custom_dataset.file ~/ttm/llama/energy-dataset/energy_dataset.py --use_peft --peft_method lora --quantization --model_name meta-llama/Llama-2-7b-chat-hf --output_dir ~/ttm/llama/models/output --use_wandb
 
 
